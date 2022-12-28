@@ -18,6 +18,8 @@ typedef enum {
 	JEDECID                   = 0x9F,
 	EBSY                      = 0x70,
 	DBSY                      = 0x80,
+	STATUS					  = 0x00,
+	
 } SS25_Commands;
 
 typedef enum {
@@ -26,7 +28,9 @@ typedef enum {
 } SS25_Error;
 
 typedef enum {
-	Status_Okay,
+	Status_Okay = 0, //TODO
+	Status_Error = 1, //TODO
+	Status_WriteEnabled = 2,
 } SS25_Status;
 
 typedef enum {
