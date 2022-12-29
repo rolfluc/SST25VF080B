@@ -6,6 +6,9 @@ extern int SPI_Write(uint8_t* bytes, uint32_t len);
 extern int SPI_Read(uint8_t* bytes, uint32_t len);
 extern int SPI_Transfer(uint8_t* writeBytes, uint8_t* readBytes, uint32_t len);
 extern void Delay_ms(uint32_t ms);
+extern void SetupGPIOs();
+extern void SetHold(bool turnHigh);
+extern void SetWP(bool turnHigh);
 static bool isWriteEnabled = false;
 
 static inline void AdaptAddress(uint32_t address, uint8_t* target)
@@ -29,7 +32,9 @@ static inline void WaitForOkay()
 
 SS25_Error SS25_Init()
 {
-	//TODO no initialization necessary?
+	SetupGPIOs();
+	SetHold(true);
+	SetWP(true);
 	return ERR_Okay;
 }
 
